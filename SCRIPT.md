@@ -3,50 +3,58 @@ Demonstration Script
 
 This is the demonstration script done during **Cisco Live Cancun 2015** session **DEVNET-1019**. The demonstration deploys the **Python** web application, built using **Flask** framework, to a **Dokku** instance running at **Cisco Intercloud Services (CIS)** public cloud.
 
- 1. CLONE GIT REPOSITORY WITH PYTHON APPLICATION EXAMPLE:
+  1. CLONE GIT REPOSITORY WITH PYTHON APPLICATION EXAMPLE:
 
- *git clone git@github.com:davivcgarcia/devnet-1019.git*
+  ```git clone git@github.com:davivcgarcia/devnet-1019.git```
 
- 2. ACCESS THE LOCAL CLONED REPOSITORY:
+  2. ACCESS THE LOCAL CLONED REPOSITORY:
 
- *cd devnet-1019*
+  ```cd devnet-1019```
 
- 3. CREATE THE DOKKU REMOTE GIT ENDPOINT FOR THE APPLICATION:
+  3. CREATE THE DOKKU REMOTE GIT ENDPOINT FOR THE APPLICATION:
 
- *git remote add dokku dokku@dokku.duckdns.org:devnet-1019*
+  ```git remote add dokku dokku@dokku.duckdns.org:devnet-1019```
 
- 4. CREATE APPLICATION PROFILE AT DOKKU:
+  4. CREATE APPLICATION PROFILE AT DOKKU:
 
- *dokku apps:create devnet-1019*
+  ```dokku apps:create devnet-1019```
 
- 5. DEPLOY THE APPLICATION CODE TO DOKKU:
+  5. DEPLOY THE APPLICATION CODE TO DOKKU:
 
- *git push dokku master*
+  ```git push dokku master```
 
- 6. VERIFY THE APPLICATION RUNNING:
+  6. VERIFY THE APPLICATION RUNNING:
 
- *dokku ps devnet-1019*
+  ```dokku ps devnet-1019```
 
- 7. SCALE THE APPLICATION TO 2 INSTANCES:
+  7. VALIDATE THE APPLICATION RUNNING ON BROWSER:
 
- *dokku ps:scale devnet-1019 web=2*
+  ```open http://devnet-1019.dokku.duckdns.org```
 
- 8. VERIFY THE APPLICATION RUNNING AFTER SCALING:
+  8. SCALE THE APPLICATION TO 2 INSTANCES:
 
- *dokku ps devnet-1019*
+  ```dokku ps:scale devnet-1019 web=2```
 
- 9. CONNECT TO DOKKU INSTANCE RUNNING AT CISCO INTERCLOUD SERVICES (CIS):
+  9. VERIFY THE APPLICATION RUNNING AFTER SCALING:
 
- *ssh dokku.duckdns.org*
+  ```dokku ps devnet-1019```
 
- 10. VERIFY HOW DOKKU USES DOCKER CONTAINERS:
+  10. VALIDATE THE SCALED APPLICATION RUNNING ON BROWSER:
 
- *sudo docker ps*
+  ```open http://devnet-1019.dokku.duckdns.org```
 
- 11. VERIFY HOW DOKKU USES NGINX:
+  11. CONNECT TO DOKKU INSTANCE RUNNING AT CISCO INTERCLOUD SERVICES (CIS):
 
- *sudo cat /home/dokku/devnet-1019/nginx.conf*
+  ```ssh dokku.duckdns.org```
 
- 12. DESTROY THE APPLICATION PROFILE AND SHUTDOWN FROM DOKKU:
+  12. VERIFY HOW DOKKU USES DOCKER CONTAINERS:
 
- *dokku apps:destroy devnet-1019*
+  ```sudo docker ps```
+
+  13. VERIFY HOW DOKKU USES NGINX:
+
+  ```sudo cat /home/dokku/devnet-1019/nginx.conf```
+
+  14. DESTROY THE APPLICATION PROFILE AND SHUTDOWN FROM DOKKU:
+
+  ```dokku apps:destroy devnet-1019```
