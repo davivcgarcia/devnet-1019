@@ -1,0 +1,5 @@
+WAIT=5      # Wait 10 seconds before test.
+TIMEOUT=10   # Timeout after 30 seconds.
+ATTEMPTS=3   # Attempt checks 3 times before fail.
+
+/
