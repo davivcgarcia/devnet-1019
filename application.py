@@ -23,24 +23,14 @@ __email__ = "davigar@cisco.com"
 __version__ = "1.0"
 
 import socket
-from flask import Flask
 from datetime import datetime
+from flask import Flask, render_template
 
 app = Flask(__name__)
-instance_address = socket.gethostbyname(socket.gethostname())
+host = socket.gethostbyname(socket.gethostname())
+
 
 @app.route('/')
 def hello():
     "Function to handle root route."
-    return """
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Cisco Live Cancun 2015 - DEVNET-1019</title>
-        </head>
-        <body>
-            <h1>Hello world, Cisco Live Cancun 2015!</h1>
-            <p><b>Current date:</b> %s</p>
-            <p><b>Host:</b> %s<p>
-        </body>
-    </html> """ % (datetime.now(), instance_address)
+    return render_template("hello.html", datetime=datetime.now(), host=host )
