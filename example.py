@@ -22,11 +22,12 @@ __author__ = "Davi Garcia"
 __email__ = "davigar@cisco.com"
 __version__ = "1.0"
 
+import socket
 from flask import Flask
 from datetime import datetime
 
 app = Flask(__name__)
-
+instance_address = socket.gethostbyname(socket.gethostname())
 
 @app.route('/')
 def hello():
@@ -35,10 +36,11 @@ def hello():
     <!DOCTYPE html>
     <html>
         <head>
-            <title>DEVNET-1019</title>
+            <title>Cisco Live Cancun 2015 - DEVNET-1019</title>
         </head>
         <body>
-            <h1>Hello world!</h1>
+            <h1>Hello world, Cisco Live Cancun 2015!</h1>
             <p><b>Current date:</b> %s</p>
+            <p><b>Host:</b> %s<p>
         </body>
-    </html> """ % datetime.now()
+    </html> """ % (datetime.now(), instance_address)
